@@ -12,7 +12,7 @@ app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/v1/notes", notesRouter);
-// app.use("/api/v1/bookmarks", bookmarksRouter);
+app.use("/api/v1/bookmarks", bookmarksRouter);
 
 app.use(errorHandler);
 
