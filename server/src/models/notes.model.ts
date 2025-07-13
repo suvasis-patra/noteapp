@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-interface INotes {
+export interface INotes {
   title: string;
   content: string;
   tags: string[];
