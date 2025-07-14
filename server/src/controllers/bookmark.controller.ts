@@ -4,15 +4,26 @@ import { asyncHandler } from "../utils/asyncHandler";
 import { ApiResponse } from "../utils/ApiResponse";
 import { ZbookmarkSchema } from "../schemas/bookmarks.schema";
 import { BookMarks, IBookMark } from "../models/bookmark.model";
+import { fetchUrlTitle } from "../utils";
 
 export const addBookmark = asyncHandler(async (req: Request, res: Response) => {
+  let urlTitle;
   const parsed = ZbookmarkSchema.safeParse(req.body);
   if (!parsed.success) {
     throw new ApiError(400, "Invalid bookmark data");
   }
 
+  if (!parsed.data.title) {
+    urlTitle = await fetchUrlTitle(parsed.data.url);
+  }
+
   const { url, title, description, tags } = parsed.data;
-  const bookmark = await BookMarks.create({ url, title, description, tags });
+  const bookmark = await BookMarks.create({
+    url,
+    title: title || urlTitle || "Untitled Bookmark",
+    description: description || "",
+    tags,
+  });
 
   res
     .status(201)

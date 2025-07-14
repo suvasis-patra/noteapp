@@ -1,6 +1,7 @@
+import axios from "axios";
 import bcrypt from "bcryptjs";
+import * as cheerio from "cheerio";
 import jwt, { JwtPayload } from "jsonwebtoken";
-import { ObjectId } from "mongoose";
 
 export async function hashPassword(password: string) {
   const hashedPassword = await bcrypt.hash(password, 10);
@@ -21,3 +22,16 @@ export function decodeToken(token: string) {
   const payload = jwt.verify(token, process.env.JWT_SECRET!) as JwtPayload;
   return payload;
 }
+
+export const fetchUrlTitle = async (url: string) => {
+  try {
+    const res = await axios.get(url);
+    const html = res.data;
+    const $ = cheerio.load(html);
+    const title = $("title").text();
+    return title || null;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+};
