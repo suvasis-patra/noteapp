@@ -7,9 +7,11 @@ import {
   getNotes,
   updateNoteById,
 } from "../controllers/notes.controller";
+import { authorizeUser } from "../middlewares/auth.middleware";
 
 const router = Router();
 
+router.use(authorizeUser);
 router.route("/").get(getNotes).post(addNotes);
 router
   .route("/:id")

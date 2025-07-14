@@ -1,6 +1,5 @@
 import { Request, Response } from "express";
 
-import { ObjectId } from "mongoose";
 import { IUserRegistration, User } from "../models/user.model";
 import { ApiError } from "../utils/ApiError";
 import { ApiResponse } from "../utils/ApiResponse";
