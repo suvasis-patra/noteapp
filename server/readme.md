@@ -48,8 +48,8 @@ A RESTful API built with **Node.js**, **Express**, and **MongoDB** to manage use
 ### 1. **Clone the Repository**
 
 ```bash
-git clone https://github.com/yourusername/bookmark-manager-backend.git
-cd bookmark-manager-backend
+git clone https://github.com/suvasis-patra/noteapp
+cd noteapp
 ```
 
 ### 2. **Install Dependencies**
@@ -76,8 +76,7 @@ CLIENT_URL=http://localhost:3000
 ## 🏁 Start the Server
 
 ```bash
-npm run dev   # For development (nodemon)
-npm run build && npm start   # For production
+npm run dev   # For development
 ```
 
 ---
