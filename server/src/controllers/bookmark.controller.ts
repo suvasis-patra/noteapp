@@ -1,10 +1,11 @@
 import { Request, Response } from "express";
+
+import { fetchUrlTitle } from "../utils";
 import { ApiError } from "../utils/ApiError";
-import { asyncHandler } from "../utils/asyncHandler";
 import { ApiResponse } from "../utils/ApiResponse";
+import { asyncHandler } from "../utils/asyncHandler";
 import { ZbookmarkSchema } from "../schemas/bookmarks.schema";
 import { BookMarks, IBookMark } from "../models/bookmark.model";
-import { fetchUrlTitle } from "../utils";
 
 export const addBookmark = asyncHandler(async (req: Request, res: Response) => {
   let urlTitle;
