@@ -1,6 +1,6 @@
-import mongoose from "mongoose";
+import mongoose, { Document } from "mongoose";
 
-export interface IBookMark {
+export interface IBookMark extends Document {
   url: string;
   title: string;
   description: string;
