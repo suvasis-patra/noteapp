@@ -1,6 +1,7 @@
 import { Router } from "express";
 import {
   addBookmark,
+  addToFavirote,
   deleteBookmarkById,
   getBookmarkById,
   getBookmarks,
@@ -15,5 +16,7 @@ router
   .get(getBookmarkById)
   .put(updateBookmarkById)
   .delete(deleteBookmarkById);
+
+router.route("/:id/favorites").patch(addToFavirote);
 
 export default router;

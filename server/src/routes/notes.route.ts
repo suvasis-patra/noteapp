@@ -1,6 +1,7 @@
 import { Router } from "express";
 import {
   addNotes,
+  addToFavirote,
   deleteNoteById,
   getNoteById,
   getNotes,
@@ -15,5 +16,7 @@ router
   .get(getNoteById)
   .put(updateNoteById)
   .delete(deleteNoteById);
+
+router.route("/:id/favorite").patch(addToFavirote);
 
 export default router;

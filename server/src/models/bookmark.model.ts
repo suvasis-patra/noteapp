@@ -5,6 +5,7 @@ export interface IBookMark extends Document {
   title: string;
   description: string;
   tags: string[];
+  isFavorite: boolean;
 }
 
 export const BookMarkSchema = new mongoose.Schema(
@@ -25,6 +26,7 @@ export const BookMarkSchema = new mongoose.Schema(
       type: [String],
       require: true,
     },
+    isFavorite: { type: Boolean, default: false },
   },
   { timestamps: true }
 );

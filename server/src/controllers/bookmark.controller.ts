@@ -120,3 +120,15 @@ export const deleteBookmarkById = asyncHandler(
       .json(new ApiResponse(204, null, "Bookmark deleted successfully"));
   }
 );
+
+export const addToFavirote = asyncHandler(
+  async (req: Request, res: Response) => {
+    const bookmark = await BookMarks.findById(req.params.id);
+    if (!bookmark) throw new ApiError(404, "Bookmark not found");
+
+    bookmark.isFavorite = !bookmark.isFavorite;
+    await bookmark.save();
+
+    res.status(200).json(new ApiResponse(200, bookmark, "Toggled favorite"));
+  }
+);

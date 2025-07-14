@@ -1,9 +1,11 @@
 import mongoose from "mongoose";
+import { boolean } from "zod";
 
 export interface INotes extends Document {
   title: string;
   content: string;
   tags: string[];
+  isFavorite: boolean;
 }
 
 export const NotesSchema = new mongoose.Schema<INotes>(
@@ -20,6 +22,7 @@ export const NotesSchema = new mongoose.Schema<INotes>(
       type: [String],
       required: true,
     },
+    isFavorite: { type: Boolean, default: false },
   },
   { timestamps: true }
 );
